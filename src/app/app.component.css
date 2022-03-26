@@ -1,0 +1,31 @@
+#mainPage {
+    flex-grow: 1;
+}
+
+#mainPage::before {
+    content: "";
+    background: url(../assets/img/background-polygon.jpg);
+    /* opacity: 0.9; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.dark-glass {
+  /* From https://css.glass */
+  background: rgba(33, 37, 41, 0.34);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border: 1px solid rgba(33, 37, 41, 0.28);
+}
+
+:host {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

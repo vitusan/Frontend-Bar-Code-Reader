@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="container-fluid d-flex flex-row align-items-center" id="mainPage">
+  <div class="container">
+    <div class="col d-flex justify-content-center dark-glass">
+      <div class="col-8 d-flex justify-content-center">
+        <app-leitor-mobile *ngIf="isMobileDevice; else leitorDesktop"></app-leitor-mobile>
+        <ng-template #leitorDesktop>
+          <app-leitor-desktop></app-leitor-desktop>
+        </ng-template>
+      </div>
+      <hr>
+      <div class="col-4 d-flex justify-content-center">
+        <app-lista-leituras></app-lista-leituras>
+      </div>
+    </div>
+  </div>
+</div>

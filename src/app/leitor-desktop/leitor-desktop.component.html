@@ -1,0 +1,13 @@
+<div class="row my-3 p-3 d-flex justify-content-center align-items-center text-center">
+  <h4 class="dyn-font">
+    Aproxime um código de barras do leitor!
+  </h4>
+  <form [formGroup]="barCodeForm">
+    <div class="input-group mt-5 d-flex justify-content-center">
+      <span class="input-group-text" id="basic-addon1"><i class="bi bi-upc-scan"></i></span>
+      <input type="email" class="form-control max-width-input" id="exampleFormControlInput1"
+        placeholder="name@example.com" autofocus placeholder="Aguardando leitura..."
+        (keyup.enter)="onCodeInserted($event)" #barCodeInput formControlName="barCodeInput">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '~ngx-toastr/toastr';
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: local("Press Start 2P"), url(./fonts/PressStart2P-Regular.ttf) format("truetype");
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.dyn-font {
+  font-family: 'Press Start 2P';
+  font-size: medium;
+  color: mediumspringgreen;
+}
+
+.dyn-font-big {
+  font-family: 'Press Start 2P';
+  font-size: large;
+  color: mediumspringgreen;
+}
+
+.dyn-font-small {
+  font-family: 'Press Start 2P';
+  color: mediumspringgreen;
+  font-size: small;
+}
+
+.max-width-input {
+  max-width: 400px;
+}
+
