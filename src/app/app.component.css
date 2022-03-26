@@ -16,12 +16,12 @@
 
 .dark-glass {
   /* From https://css.glass */
-  background: rgba(33, 37, 41, 0.34);
+  background: rgba(67, 71, 76, 0.34);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(33, 37, 41, 0.28);
+  border: 1px solid rgba(67, 71, 76, 0.28);
 }
 
 :host {

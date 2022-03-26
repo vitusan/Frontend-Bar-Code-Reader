@@ -1,0 +1,47 @@
+<div class="modal bg-dark" tabindex="-1" #modalFufillItemInfo>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Revise as informações do scan</h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editBarCodeForm" (ngSubmit)="onSubmitEditBarCodeForm()">
+          <div class="mb-3 d-flex justify-content-center">
+            <label for="barCodeInput" class="form-label">Código de Barras</label>
+            <input class="form-control  max-width-input" type="text" [value]="modalService.itemToEdit.barCode || null"
+              aria-label="readonly input barcode" readonly #barCodeInput formControlName="barCodeInput"
+              id="barCodeInput">
+          </div>
+          <div class="mb-3 d-flex justify-content-center">
+            <label for="nameInput" class="form-label">Nome do Produto</label>
+            <input class="form-control  max-width-input" type="text" [value]="modalService.itemToEdit.nome || null"
+              aria-label="readonly input barcode" #nameInput formControlName="nameInput" id="nameInput">
+          </div>
+          <div class="mb-3 d-flex justify-content-center">
+            <label for="fabricanteInput" class="form-label">Fabricante</label>
+            <input class="form-control  max-width-input" type="text" [value]="modalService.itemToEdit.fabricante || null"
+              aria-label="readonly input barcode" #fabricanteInput formControlName="fabricanteInput"
+              id="fabricanteInput">
+          </div>
+          <div class="mb-3 d-flex justify-content-center">
+            <label for="categoriaInput" class="form-label">Categoria</label>
+            <select class="form-select max-width-input" aria-label="Select category" #categoriaInput
+              formControlName="categoriaInput" id="categoriaInput">
+              <option selected>Selecione uma categoria...</option>
+              <option *ngFor="let categoria of categorias; let index = index" [value]="index + 1">{{ categoria }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 d-flex justify-content-center">
+            <label for="precoInput" class="form-label">Preço</label>
+            <input class="form-control  max-width-input" type="text" [value]="modalService.itemToEdit.price || null"
+              aria-label="readonly input barcode" #precoInput formControlName="precoInput" id="precoInput">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Pronto!</button>
+      </div>
+    </div>
+  </div>
+</div>

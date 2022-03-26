@@ -1,9 +1,11 @@
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { BackendResponseInterface } from "../interfaces/backendResponse.interface";
 import { BarCodeInterface } from './../interfaces/barCode.interface';
 
+@Injectable()
 export class BarCodeService {
 
   private url = `${environment.backend_url}cosmos`;
@@ -17,7 +19,7 @@ export class BarCodeService {
   ) { }
 
   retrieveInformation(barCode: string): Observable<BackendResponseInterface> {
-    return this.httpClient.get<BackendResponseInterface>(`this.url/${barCode}`);
+    return this.httpClient.get<BackendResponseInterface>(`${this.url}/${barCode}`);
   }
 
   addScan(barCode: BarCodeInterface) {

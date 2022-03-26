@@ -11,7 +11,7 @@ import { BarCodeService } from '../services/barCode.service';
 export class ListaLeiturasComponent implements OnInit {
 
   barCodesScanned: BarCodeInterface[] = [];
-
+  editingMode = false;
   subscriptionToScanner: Subscription;
 
   constructor(
@@ -24,6 +24,11 @@ export class ListaLeiturasComponent implements OnInit {
         this.barCodesScanned.push(barCode);
       }
     });
+  }
+
+  onClickScannedItem(item: BarCodeInterface) {
+    console.log('Cliked item', item);
+    this.editingMode = true;
   }
 
 }
