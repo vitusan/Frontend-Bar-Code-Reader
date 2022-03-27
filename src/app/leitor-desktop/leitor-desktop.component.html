@@ -3,11 +3,23 @@
     Aproxime um código de barras do leitor!
   </h4>
   <form [formGroup]="barCodeForm">
-    <div class="input-group mt-5 d-flex justify-content-center">
+    <div class="input-group my-5 d-flex justify-content-center">
       <span class="input-group-text" id="basic-addon1"><i class="bi bi-upc-scan"></i></span>
-      <input type="email" class="form-control max-width-input" id="exampleFormControlInput1"
-        placeholder="name@example.com" autofocus placeholder="Aguardando leitura..."
+      <input type="email" class="form-control max-width-input" autofocus placeholder="Aguardando leitura..."
         (keyup.enter)="onCodeInserted($event)" #barCodeInput formControlName="barCodeInput">
     </div>
   </form>
+  <div class="row d-flex justify-content-center">
+    <div class="col-3 d-flex justify-content-center">
+      <button class="btn btn-success w-100" (click)="onDownload()">
+        Baixar Arquivo CSV
+      </button>
+    </div>
+    <!-- <div class="col-3 d-flex justify-content-center">
+      <button class="btn btn-danger w-100" (click)="onClickItemToRemove(item)">
+        Remover
+      </button>
+    </div> -->
+  </div>
 </div>
+

@@ -1,5 +1,5 @@
 import { ModalService } from './services/modal.service';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
@@ -12,6 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BarCodeService } from './services/barCode.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditScanModalComponent } from './edit-scan-modal/edit-scan-modal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { ShowMoreScansModalComponent } from './show-more-scans-modal/show-more-scans-modal.component';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -20,20 +27,26 @@ import { EditScanModalComponent } from './edit-scan-modal/edit-scan-modal.compon
     ListaLeiturasComponent,
     LeitorMobileComponent,
     LeitorDesktopComponent,
-    EditScanModalComponent
+    EditScanModalComponent,
+    ShowMoreScansModalComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    CurrencyMaskModule
   ],
   providers: [
     NavbarComponent,
     BarCodeService,
-    ModalService
+    ModalService,
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

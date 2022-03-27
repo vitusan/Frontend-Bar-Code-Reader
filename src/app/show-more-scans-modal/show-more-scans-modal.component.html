@@ -1,0 +1,42 @@
+<div class="modal" tabindex="-1" #modalShowMoreScans>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-centered dyn-font">Scans</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let item of barCodesScanned; let index = index">
+          <div class="card my-3" style="max-width: 540px; min-width: 300px;">
+            <div class="row g-0">
+              <div class="col">
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.barCode }}</h5>
+                  <p class="card-text">Nome: {{ item.nome }}</p>
+                  <p class="card-text">Fabricante: {{ item.fabricante }}</p>
+                  <p class="card-text">Categoria: {{ item.categoria }}</p>
+                  <p class="card-text">Preço: {{ item.price | currency }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <!-- <div class="col-6 d-flex justify-content-center">
+              <button class="btn btn-warning w-100" (click)="onClickItemToEdit(item)">
+                Editar
+              </button>
+            </div> -->
+            <div class="col-12 d-flex justify-content-center">
+              <button class="btn btn-danger w-100" (click)="onClickItemToRemove(item)">
+                Remover
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="closeModalShowMoreScans()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,10 +8,16 @@
           <app-leitor-desktop></app-leitor-desktop>
         </ng-template>
       </div>
-      <hr>
-      <div class="col-4 d-flex justify-content-center">
+      <div class="vr"></div>
+      <div class="col-4 d-flex justify-content-end">
         <app-lista-leituras></app-lista-leituras>
       </div>
     </div>
   </div>
 </div>
+<app-edit-scan-modal></app-edit-scan-modal>
+<app-show-more-scans-modal></app-show-more-scans-modal>
+<ngx-spinner name="pacman" bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fdff03" type="pacman" [fullScreen]="true">
+  <p style="color: white" class="dyn-font-small">Carregando...</p>
+</ngx-spinner>
+

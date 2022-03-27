@@ -34,3 +34,7 @@ body {
   max-width: 400px;
 }
 
+.max-width-input-currency {
+  max-width: 150px;
+}
+
