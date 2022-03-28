@@ -14,16 +14,6 @@
     z-index: -1;
 }
 
-.dark-glass {
-  /* From https://css.glass */
-  background: rgba(67, 71, 76, 0.34);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(67, 71, 76, 0.28);
-}
-
 :host {
     min-height: 100vh;
     display: flex;

@@ -17,6 +17,9 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ShowMoreScansModalComponent } from './show-more-scans-modal/show-more-scans-modal.component';
+import { ScansPageComponent } from './scans-page/scans-page.component';
+import { LeitorPageComponent } from './leitor-page/leitor-page.component';
+import { AppRoutingModule } from './routing/routing.module';
 
 registerLocaleData(ptBr);
 
@@ -28,7 +31,9 @@ registerLocaleData(ptBr);
     LeitorMobileComponent,
     LeitorDesktopComponent,
     EditScanModalComponent,
-    ShowMoreScansModalComponent
+    ShowMoreScansModalComponent,
+    ScansPageComponent,
+    LeitorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ registerLocaleData(ptBr);
     ToastrModule.forRoot(),
     HttpClientModule,
     NgxSpinnerModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    AppRoutingModule
   ],
   providers: [
     NavbarComponent,
@@ -49,4 +55,5 @@ registerLocaleData(ptBr);
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
