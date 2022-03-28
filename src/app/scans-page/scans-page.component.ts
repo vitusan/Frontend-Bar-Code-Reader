@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BarCodeInterface } from '../interfaces/barCode.interface';
+import { BarCodeService } from '../services/barCode.service';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-scans-page',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScansPageComponent implements OnInit {
 
-  constructor() { }
+  barCodesScanned: BarCodeInterface[] = [];
+
+  constructor(
+    private modalService: ModalService,
+    private barCodeService: BarCodeService
+  ) { }
 
   ngOnInit(): void {
+    this.barCodesScanned = this.barCodeService.getBarCodesScanned();
+  }
+
+  onClickItemToEdit(item: BarCodeInterface) {
+    this.modalService.itemToEdit = item;
+    this.modalService.openModal();
+  }
+
+  onClickItemToRemove(item: BarCodeInterface) {
+    this.barCodeService.removeScan(item);
   }
 
 }

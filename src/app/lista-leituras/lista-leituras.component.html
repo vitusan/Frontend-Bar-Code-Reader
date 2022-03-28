@@ -31,6 +31,9 @@
     </div>
   </div>
   <div class="row mb-3" *ngIf="barCodesScanned.length > 2">
-    <button class="btn btn-dark" (click)="onShowMoreScans()">Mostrar mais scans</button>
+    <button class="btn btn-dark" [routerLink]="['../scans']">Mostrar mais scans</button>
+  </div>
+  <div class="row mb-3">
+    <button class="btn btn-dark" [routerLink]="['../scans']">Pagina more scans</button>
   </div>
 </div>

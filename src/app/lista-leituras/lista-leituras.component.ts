@@ -36,8 +36,4 @@ export class ListaLeiturasComponent implements OnInit {
     this.barCodeService.removeScan(item);
   }
 
-  onShowMoreScans() {
-    this.modalService.openModalShowMoreScans();
-  }
-
 }

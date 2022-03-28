@@ -4,8 +4,8 @@ import { LeitorPageComponent } from "../leitor-page/leitor-page.component";
 import { ScansPageComponent } from "../scans-page/scans-page.component";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/leituras', pathMatch: 'full' },
-  { path: 'leituras', component: LeitorPageComponent },
+  { path: '', redirectTo: '/leitor', pathMatch: 'full' },
+  { path: 'leitor', component: LeitorPageComponent },
   { path: 'scans', component: ScansPageComponent },
 ]
 

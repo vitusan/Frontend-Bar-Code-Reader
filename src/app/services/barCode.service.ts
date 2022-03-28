@@ -22,6 +22,10 @@ export class BarCodeService {
     private toastrService: ToastrService
   ) { }
 
+  getBarCodesScanned(): BarCodeInterface[] {
+    return this.barCodesScanned;
+  }
+
   retrieveInformation(barCode: string): Observable<BackendResponseInterface> {
     return this.httpClient.get<BackendResponseInterface>(`${this.url}/${barCode}`);
   }
