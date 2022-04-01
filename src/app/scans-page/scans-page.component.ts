@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BarCodeInterface } from '../interfaces/barCode.interface';
 import { BarCodeService } from '../services/barCode.service';
 import { ModalService } from '../services/modal.service';
@@ -11,6 +12,7 @@ import { ModalService } from '../services/modal.service';
 export class ScansPageComponent implements OnInit {
 
   barCodesScanned: BarCodeInterface[] = [];
+  subscriptionToScanner: Subscription;
 
   constructor(
     private modalService: ModalService,
@@ -19,6 +21,11 @@ export class ScansPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.barCodesScanned = this.barCodeService.getBarCodesScanned();
+    this.subscriptionToScanner = this.barCodeService.barCodeReady.subscribe({
+      next: scans => {
+        this.barCodesScanned = scans;
+      }
+    });
   }
 
   onClickItemToEdit(item: BarCodeInterface) {

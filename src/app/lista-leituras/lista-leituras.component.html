@@ -1,6 +1,5 @@
-<div class="row d-flex justify-content-center px-4">
-  <h5 *ngIf="barCodesScanned.length >= 1" class="dyn-font-small my-3 text-center">Clique nos itens abaixo para editar as
-    informações</h5>
+<div class="row d-flex justify-content-center px-4 my-2">
+  <h5 *ngIf="barCodesScanned.length >= 1" class="dyn-font-small my-3 text-center">ITENS ESCANEADOS</h5>
   <div *ngFor="let item of barCodesScanned; let index = index">
     <div *ngIf="index + 1 > barCodesScanned.length - 2 ">
       <div class="card my-3" style="max-width: 540px; min-width: 300px;">
@@ -32,8 +31,5 @@
   </div>
   <div class="row mb-3" *ngIf="barCodesScanned.length > 2">
     <button class="btn btn-dark" [routerLink]="['../scans']">Mostrar mais scans</button>
-  </div>
-  <div class="row mb-3">
-    <button class="btn btn-dark" [routerLink]="['../scans']">Pagina more scans</button>
   </div>
 </div>

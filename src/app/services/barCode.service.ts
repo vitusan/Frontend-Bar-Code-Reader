@@ -37,6 +37,7 @@ export class BarCodeService {
   editScan(barCodeToEdit: BarCodeInterface) {
     const oldBarCode = this.barCodesScanned.find(barCode => barCode.barCode === barCodeToEdit.barCode);
     if (oldBarCode) {
+      oldBarCode.barCode = barCodeToEdit.barCode;
       oldBarCode.categoria = barCodeToEdit.categoria;
       oldBarCode.nome = barCodeToEdit.nome;
       oldBarCode.price = barCodeToEdit.price;

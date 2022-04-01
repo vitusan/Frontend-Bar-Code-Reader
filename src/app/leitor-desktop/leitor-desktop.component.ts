@@ -16,6 +16,7 @@ export class LeitorDesktopComponent implements OnInit {
 
   barCodeForm: FormGroup;
   editBarCodeForm: FormGroup;
+  manualInputMode: boolean;
 
   constructor(
     private barCodeService: BarCodeService,
@@ -25,6 +26,7 @@ export class LeitorDesktopComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.manualInputMode = false;
     this.modalService.setLeitorDesktopComponent(this);
     this.barCodeService.setLeitorDesktopComponent(this);
     this.barCodeForm = new FormGroup({
@@ -44,12 +46,13 @@ export class LeitorDesktopComponent implements OnInit {
           this.barCodeForm.get('barCodeInput')?.reset();
         },
         error: error => {
-          this.toastr.error(`${error.message}`, undefined, {
+          this.toastr.error(`${error.status === 404 ? 'Código de barras não encontrado' : error.status}`, 'Erro no Cosmos', {
             progressBar: true
           }).onHidden.subscribe({
             next: () => {
               this.spinner.hide('pacman');
-              this.barCodeForm.get('barCodeInput')?.reset();
+              this.manualInputMode = true;
+              // this.barCodeForm.get('barCodeInput')?.reset();
             }
           })
         }
@@ -69,6 +72,15 @@ export class LeitorDesktopComponent implements OnInit {
 
   onDownload() {
     this.toastr.info('Feature em desenvolvimento!');
+  }
+
+  onManualInput() {
+    this.manualInputMode = false;
+    this.modalService.manualMode.next(true);
+    this.modalService.itemToEdit.barCode = this.barCodeForm.get('barCodeInput')?.value;
+    this.barCodeService.addScan({ barCode: this.barCodeForm.get('barCodeInput')?.value });
+    this.modalService.openModal();
+    this.barCodeForm.get('barCodeInput')?.reset();
   }
 
 }

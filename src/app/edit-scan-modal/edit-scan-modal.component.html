@@ -9,7 +9,7 @@
           <form [formGroup]="editBarCodeForm">
             <div class="mb-3">
               <label for="barCodeInput" class="form-label">Código de Barras</label>
-              <input class="form-control  max-width-input" type="number" aria-label="readonly input barcode" readonly
+              <input class="form-control  max-width-input" type="number" aria-label="readonly input barcode" [readonly] = "!manualMode"
                 #barCodeInput formControlName="barCodeInput" id="barCodeInput">
               <div class="invalid-feedback">
                 <div *ngIf="controls['nameInput'].errors?.['required']">Nome do Produto é obrigatório.</div>

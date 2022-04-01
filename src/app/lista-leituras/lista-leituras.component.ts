@@ -20,6 +20,7 @@ export class ListaLeiturasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.barCodesScanned = this.barCodeService.getBarCodesScanned();
     this.subscriptionToScanner = this.barCodeService.barCodeReady.subscribe({
       next: scans => {
         this.barCodesScanned = scans;

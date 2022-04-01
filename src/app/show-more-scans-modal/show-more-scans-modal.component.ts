@@ -40,8 +40,8 @@ export class ShowMoreScansModalComponent implements OnInit {
     this.barCodeService.removeScan(item);
   }
 
-  closeModalShowMoreScans() {
-    this.modalService.closeModalShowMoreScans();
-  }
+  // closeModalShowMoreScans() {
+  //   this.modalService.closeModalShowMoreScans();
+  // }
 
 }

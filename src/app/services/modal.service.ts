@@ -1,5 +1,6 @@
 import { ElementRef, Injectable } from "@angular/core";
 import * as bootstrap from 'bootstrap';
+import { Subject } from "rxjs";
 import { EditScanModalComponent } from '../edit-scan-modal/edit-scan-modal.component';
 import { LeitorDesktopComponent } from "../leitor-desktop/leitor-desktop.component";
 import { BarCodeInterface } from './../interfaces/barCode.interface';
@@ -10,11 +11,13 @@ export class ModalService {
   itemToEdit: BarCodeInterface;
   modalEditScan: ElementRef;
   modalShowMoreScans: ElementRef;
+  manualMode: Subject<boolean> = new Subject();
   private modal: bootstrap.Modal;
   private editScanModalComponent: EditScanModalComponent
   private leitorDesktopComponent: LeitorDesktopComponent
 
   constructor() {
+    this.manualMode.next(false);
     this.resetItemToEdit();
   }
 
@@ -30,20 +33,21 @@ export class ModalService {
     this.modal.show();
   }
 
-  openModalShowMoreScans() {
-    this.modal = new bootstrap.Modal(this.modalShowMoreScans.nativeElement, {
-      backdrop: "static"
-    });
-    this.modal.show();
-  }
+  // openModalShowMoreScans() {
+  //   this.modal = new bootstrap.Modal(this.modalShowMoreScans.nativeElement, {
+  //     backdrop: "static"
+  //   });
+  //   this.modal.show();
+  // }
 
-  closeModalShowMoreScans() {
-    this.modal.hide();
-    (this.leitorDesktopComponent.barCodeInput.nativeElement as HTMLElement).focus();
-  }
+  // closeModalShowMoreScans() {
+  //   this.modal.hide();
+  //   (this.leitorDesktopComponent.barCodeInput.nativeElement as HTMLElement).focus();
+  // }
 
   closeModal() {
     this.resetItemToEdit();
+    this.manualMode.next(false);
     this.modal.hide();
     (this.leitorDesktopComponent.barCodeInput.nativeElement as HTMLElement).focus();
   }

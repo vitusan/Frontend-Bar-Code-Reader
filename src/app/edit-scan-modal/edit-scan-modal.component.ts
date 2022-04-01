@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
+import { Subscription } from 'rxjs';
 import { CategoriasEnum } from '../enum/categorias.enum';
 import { BarCodeService } from '../services/barCode.service';
 import { ModalService } from './../services/modal.service';
@@ -19,6 +20,8 @@ export class EditScanModalComponent implements OnInit {
   categorias: string[];
   popovers: bootstrap.Popover[];
   hoveredSubmit: boolean;
+  manualModeSubscription: Subscription;
+  manualMode: boolean;
 
   constructor(
     public modalService: ModalService,
@@ -26,6 +29,11 @@ export class EditScanModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.manualModeSubscription = this.modalService.manualMode.subscribe({
+      next: (value) => {
+        this.manualMode = value;
+      }
+    });
     this.hoveredSubmit = false;
     new bootstrap.Popover(document.body, {
       selector: '.has-popover',
@@ -46,6 +54,7 @@ export class EditScanModalComponent implements OnInit {
   }
 
   onSubmitEditBarCodeForm() {
+    this.modalService.itemToEdit.barCode = this.editBarCodeForm.get('barCodeInput')?.value;
     this.modalService.itemToEdit.nome = this.editBarCodeForm.get('nameInput')?.value;
     this.modalService.itemToEdit.fabricante = this.editBarCodeForm.get('fabricanteInput')?.value;
     this.modalService.itemToEdit.categoria = this.editBarCodeForm.get('categoriaInput')?.value;

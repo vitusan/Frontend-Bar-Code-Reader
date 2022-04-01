@@ -11,8 +11,11 @@
   </form>
   <div class="row d-flex justify-content-center">
     <div class="col-3 d-flex justify-content-center">
-      <button class="btn btn-success w-100" (click)="onDownload()">
+      <button class="btn btn-success w-40 me-3" (click)="onDownload()">
         Download CSV
+      </button>
+      <button *ngIf="manualInputMode" class="btn btn-large btn-light w-45" (click)="onManualInput()">
+        Cadastrar Manualmente
       </button>
     </div>
     <!-- <div class="col-3 d-flex justify-content-center">
