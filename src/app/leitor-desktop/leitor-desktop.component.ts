@@ -1,9 +1,11 @@
+import { Subscription } from 'rxjs';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { BarCodeService } from '../services/barCode.service';
 import { ModalService } from './../services/modal.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-leitor-desktop',
@@ -17,6 +19,8 @@ export class LeitorDesktopComponent implements OnInit {
   barCodeForm: FormGroup;
   editBarCodeForm: FormGroup;
   manualInputMode: boolean;
+  hasScannedAlready: boolean;
+  scanSubscription: Subscription;
 
   constructor(
     private barCodeService: BarCodeService,
@@ -26,6 +30,12 @@ export class LeitorDesktopComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.hasScannedAlready = this.barCodeService.getBarCodesScanned().length >= 1 ? true : false;
+    this.scanSubscription = this.barCodeService.barCodeReady.subscribe({
+      next: () => {
+        this.hasScannedAlready = this.barCodeService.getBarCodesScanned().length >= 1 ? true : false;
+      }
+    })
     this.manualInputMode = false;
     this.modalService.setLeitorDesktopComponent(this);
     this.barCodeService.setLeitorDesktopComponent(this);
@@ -71,7 +81,18 @@ export class LeitorDesktopComponent implements OnInit {
   }
 
   onDownload() {
-    this.toastr.info('Feature em desenvolvimento!');
+    // this.toastr.info('Feature em desenvolvimento!');
+    this.barCodeService.downloadXLSX(this.barCodeService.getBarCodesScanned()).subscribe({
+      next: (xlsx) => {
+        saveAs(xlsx, 'Scans.xlsx');
+        // window.open(window.URL.createObjectURL(thefile));
+      },
+      error: () => {
+        this.toastr.error('Erro ao baixar o arquivo.',undefined, {
+          progressBar: true
+        })
+      }
+    });
   }
 
   onManualInput() {

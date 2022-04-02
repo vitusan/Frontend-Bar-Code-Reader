@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { Observable, Subject } from "rxjs";
+import { map, Observable, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { BackendResponseInterface } from "../interfaces/backendResponse.interface";
 import { LeitorDesktopComponent } from "../leitor-desktop/leitor-desktop.component";
@@ -28,6 +28,12 @@ export class BarCodeService {
 
   retrieveInformation(barCode: string): Observable<BackendResponseInterface> {
     return this.httpClient.get<BackendResponseInterface>(`${this.url}/${barCode}`);
+  }
+
+  downloadXLSX(products: BarCodeInterface[]): Observable<any> {
+    return this.httpClient.post(`${this.url}/download-XLSX`, {products}, {
+      responseType: "blob"
+    });
   }
 
   addScan(barCode: BarCodeInterface) {

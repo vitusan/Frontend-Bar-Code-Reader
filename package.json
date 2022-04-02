@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:win": "(if exist ..\\Backend-Bar-Code-Reader\\front rmdir ..\\Backend-Bar-Code-Reader\\front /s /q) && ng build --prod && move dist/frontend-leitor ..\\Backend-Bar-Code-Reader\\front"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/router": "~13.2.0",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.1",
+    "file-saver": "^2.0.5",
     "ng2-currency-mask": "^13.0.3",
     "ngx-spinner": "^13.1.1",
     "ngx-toastr": "^14.2.2",
@@ -33,6 +35,7 @@
     "@angular/cli": "~13.2.3",
     "@angular/compiler-cli": "~13.2.0",
     "@types/bootstrap": "^5.1.9",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
